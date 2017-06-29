@@ -8,7 +8,7 @@ tag: [java]
 1、简述
 	BTrace的最大好处，是可以通过自己编写的脚本，获取应用的一切调用信息，而不需要不断地修改代码。特别严格的约束，保证自己的消耗特别小，只要定义脚本时不作大死，直接在生产环境打开也没影响。引用[@btrace](http://calvin1978.blogcn.com/articles/btrace1.html) 文章
 
-2、使用方法
+2、使用方法</br>
 	2.1 我们先举个栗子
 {% highlight java %}
 	import com.sun.btrace.annotations.*;
@@ -27,11 +27,13 @@ tag: [java]
 	}
 {% endhighlight %}
 
-	然后ps找出要监控的java应用的pid，
- 	./btrace $pid HelloWorld.java  或者 
-	./btrace $pid HelloWorld.java > mylog 就跑起来了（$pid 是我们游戏服的进程ID)。
-	./btracec HelloWorld.java 预编译命令、生成class文件
-	基本上不用任何BTrace的知识，都能猜出HelloWorld会干啥。通过JVM Attach API，btrace把自己绑进了被监控的进程，按HelloWorld.java里的定义，进行AOP式的代码植入(在运行时，动态地将代码切入到类的指定方法、指定位置上的编程思想就是面向切面的编程就是AOP)。如果还想监控其他内容，直接修改HelloWorld.java，再执行一次btrace就可以了，不需要重启应用!
+
+
+然后ps找出要监控的java应用的pid，
+./btrace $pid HelloWorld.java  或者 
+./btrace $pid HelloWorld.java > mylog 就跑起来了（$pid 是我们游戏服的进程ID)。
+./btracec HelloWorld.java 预编译命令、生成class文件
+基本上不用任何BTrace的知识，都能猜出HelloWorld会干啥。通过JVM Attach API，btrace把自己绑进了被监控的进程，按HelloWorld.java里的定义，进行AOP式的代码植入(在运行时，动态地将代码切入到类的指定方法、指定位置上的编程思想就是面向切面的编程就是AOP)。如果还想监控其他内容，直接修改HelloWorld.java，再执行一次btrace就可以了，不需要重启应用!
 	
 	
 	2.2 应用场景
@@ -52,6 +54,9 @@ tag: [java]
 		*BTrace植入过的代码，会一直在，直到应用重启为止。
 
 	2.4拦截方法、举几个例子
+	
+	
+	
 {% highlight java %}
 	package test;
 
